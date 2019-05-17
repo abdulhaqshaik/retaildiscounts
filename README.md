@@ -4,9 +4,9 @@ Discount Calculators based on the customer type and discount profile
 Follow the steps below to get started:
 
 1. [Prerequisites](#1-prerequisites)
-2. [Prerequisites](#2-build-and-run-spring-boot-application)
-3. [Prerequisites](#3-api-documentaion)
-4. [Prerequisites](#4-test-the-application)
+2. [Build and Run Spring Boot Application](#2-build-and-run-spring-boot-application)
+3. [API Documentaion](#3-api-documentaion)
+4. [Test the Application](#4-test-the-application)
 
 ## 1. Prerequisites
 	Please make sure that below the Software/Tools are already installed in your machine.	
