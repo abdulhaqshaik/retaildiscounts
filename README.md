@@ -50,12 +50,11 @@ Follow the steps below to get started:
 	5. Submit the request by clicking on Send Button
 	6. Check the Output JSON 
 		{
- 			"status_code": "SUCCESS",
-    			"status_desc": "Net Amount generated successfully after discounts",
-    			"txn_id": 123,
-    			"net_payable": 770
+ 		   "status_code": "SUCCESS",
+    		   "status_desc": "Net Amount generated successfully after discounts",
+    		   "txn_id": 123,
+                   "net_payable": 780
 		}
-
 ## 5. UML Class Diagram
 	You can find the high level UML Class diagram in discounts.png
 
