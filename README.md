@@ -7,6 +7,8 @@ Follow the steps below to get started:
 2. [Build and Run Spring Boot Application](#2-build-and-run-spring-boot-application)
 3. [API Documentaion](#3-api-documentaion)
 4. [Test the Application](#4-test-the-application)
+5. [UML Class Diagram](#5-uml-class-diagram)
+6. [Customer Data](#6-customer-data)
 
 ## 1. Prerequisites
 	Please make sure that below the Software/Tools are already installed in your machine.	
@@ -54,7 +56,15 @@ Follow the steps below to get started:
     			"net_payable": 770
 		}
 
+## 5.	UML Class Diagram
+	You can find the high level UML Class diagram in discounts.png
 
+##6.   Customer Data
+	1. Please open customer.txt file for customer data which is a CSV like below
+		1,Abdul,true,false,01-01-2019
+		(id,name,isEmployee,isAffiliate,dateOfJoining,is2YearsOld)
+	2. This CSV file will be loaded once the springboot app is up and running.
+	
 
 
 
