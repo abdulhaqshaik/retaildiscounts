@@ -16,7 +16,7 @@ Follow the steps below to get started:
 	2. Maven build tool
 	3. Spring Tool Suite (Optional)
 
-## 2.  Build and Run Spring Boot Application
+## 2. Build and Run Spring Boot Application
 	1. Go to any folder in your machine and clone this repo
 		https://github.com/abdulhaqshaik/retaildiscounts.git
 	2. Go to retailsdiscounts app folder
@@ -28,11 +28,11 @@ Follow the steps below to get started:
 	7. Open the browser and go to below the URL to check the application running.
 		http://localhost:8080/
 
-## 3.  API Documentaion
+## 3. API Documentaion
 	Check the Swagger UI in below the URL
 		http://localhost:8080/swagger-ui.html
 
-## 4.  Test the Application
+## 4. Test the Application
 	1. Use Postman to test the application
 	2. Type the url http://localhost:8080/amount/net
 	3. Select POST Method and Body->raw->JSON
@@ -56,10 +56,10 @@ Follow the steps below to get started:
     			"net_payable": 770
 		}
 
-## 5.	UML Class Diagram
+## 5.  UML Class Diagram
 	You can find the high level UML Class diagram in discounts.png
 
-##6.   Customer Data
+## 6.  Customer Data
 	1. Please open customer.txt file for customer data which is a CSV like below
 		1,Abdul,true,false,01-01-2019
 		(id,name,isEmployee,isAffiliate,dateOfJoining,is2YearsOld)
