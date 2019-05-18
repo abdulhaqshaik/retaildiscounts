@@ -45,35 +45,44 @@ public class BaseUtility {
 	{
 		Double skip_grocery_amt = this.get_amount_skip_grocery(txn.getList());
 		Double total_amt = this.get_amount_with_grocery(txn.getList());
+		Double non_grocery_amt = total_amt-skip_grocery_amt;
 		Double discounted = 0.00;
 		//1. If customer is an Employee, then 30% discount + $5 for every $100 on bill
+		if(customers_list.get(txn.getCustomer_id())!=null)
+		{
 		if(customers_list.get(txn.getCustomer_id()).getIsEmployee())
 		{	
-			logger.debug("Customer is an Employee, So common $5 discount for every $100 on total bill + 30% discount on non-groceries..");
-			discounted = total_amt/100;
-			discounted = total_amt - (discounted.intValue()*5);
-			discounted = discounted -(skip_grocery_amt*30/100);
+			logger.debug("Customer is an Employee, So 30% discount on non-groceries.. + common $5 discount for every $100 on bill ");
+			discounted = skip_grocery_amt -(skip_grocery_amt*30/100);
+			discounted = discounted + non_grocery_amt;
+			discounted = discounted - (discounted.intValue()/100*5);
 		}
 		//2. if customer is an affiliate, then 10% discount +  $5 for every $100 on bill
 		else if(customers_list.get(txn.getCustomer_id()).getIsAffliate())
 		{	
-			logger.debug("Customer is an Affiliate, So common $5 discount for every $100 on total bill + 10% discount on non-groceries..");
-			discounted = total_amt/100;
-			discounted = total_amt - (discounted.intValue()*5);
-			discounted = discounted -(skip_grocery_amt*10/100);
+			logger.debug("Customer is an Affiliate, So 10% discount on non-groceries.. + common $5 discount for every $100 on bill ");
+			discounted = skip_grocery_amt -(skip_grocery_amt*10/100);
+			discounted = discounted + non_grocery_amt;
+			discounted = discounted - (discounted.intValue()/100*5);
 		}
 		//3. if customer is more than 2 years, then 5% discount +  $5 for every $100 on bill
 		else if(customers_list.get(txn.getCustomer_id()).getIs2yearsOld())
 		{	
-			logger.debug("Customer is 2 years old to the retail store, So common $5 discount for every $100 on total bill + 5% discount on non-groceries..");
-			discounted = total_amt/100;
-			discounted = total_amt - (discounted.intValue()*5);
-			discounted = discounted -(skip_grocery_amt*5/100);
+			logger.debug("Customer is 2 years old to the retail store, So 5% discount on non-groceries.. + common $5 discount for every $100 on bill ");
+			discounted = skip_grocery_amt -(skip_grocery_amt*5/100);
+			discounted = discounted + non_grocery_amt;
+			discounted = discounted - (discounted.intValue()/100*5);
 		}
 		else
 		{	
 			logger.debug("Some other customer which doesnt have any information in the system (or) Bill less than $100");
 			throw new DiscountException("Some other customer which doesnt have any information in the system (or) Bill less than $100");
+		}
+		}
+		else
+		{
+			logger.debug("Customer is New, So common $5 discount for every $100 on bill ");
+			discounted = total_amt - (total_amt.intValue()/100*5);
 		}
 		return discounted;
 	}
@@ -138,5 +147,5 @@ public class BaseUtility {
         return hmap;
        
     }
-	
+		
 }
