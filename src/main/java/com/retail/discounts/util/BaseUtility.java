@@ -29,7 +29,7 @@ public class BaseUtility {
 	
 	private static final Logger logger = LogManager.getLogger(BaseUtility.class);
 	
-	public static HashMap<Integer,Customer> customers_list = loadItemsCSV();
+	public static HashMap<Integer,Customer> CUSTOMER_LIST = loadItemsCSV();
 	
 	public Bill getBill(Transaction txn)
 	{
@@ -48,9 +48,9 @@ public class BaseUtility {
 		Double non_grocery_amt = total_amt-skip_grocery_amt;
 		Double discounted = 0.00;
 		//1. If customer is an Employee, then 30% discount + $5 for every $100 on bill
-		if(customers_list.get(txn.getCustomer_id())!=null)
+		if(CUSTOMER_LIST.get(txn.getCustomer_id())!=null)
 		{
-		if(customers_list.get(txn.getCustomer_id()).getIsEmployee())
+		if(CUSTOMER_LIST.get(txn.getCustomer_id()).getIsEmployee())
 		{	
 			logger.debug("Customer is an Employee, So 30% discount on non-groceries.. + common $5 discount for every $100 on bill ");
 			discounted = skip_grocery_amt -(skip_grocery_amt*30/100);
@@ -58,7 +58,7 @@ public class BaseUtility {
 			discounted = discounted - (discounted.intValue()/100*5);
 		}
 		//2. if customer is an affiliate, then 10% discount +  $5 for every $100 on bill
-		else if(customers_list.get(txn.getCustomer_id()).getIsAffliate())
+		else if(CUSTOMER_LIST.get(txn.getCustomer_id()).getIsAffliate())
 		{	
 			logger.debug("Customer is an Affiliate, So 10% discount on non-groceries.. + common $5 discount for every $100 on bill ");
 			discounted = skip_grocery_amt -(skip_grocery_amt*10/100);
@@ -66,7 +66,7 @@ public class BaseUtility {
 			discounted = discounted - (discounted.intValue()/100*5);
 		}
 		//3. if customer is more than 2 years, then 5% discount +  $5 for every $100 on bill
-		else if(customers_list.get(txn.getCustomer_id()).getIs2yearsOld())
+		else if(CUSTOMER_LIST.get(txn.getCustomer_id()).getIs2yearsOld())
 		{	
 			logger.debug("Customer is 2 years old to the retail store, So 5% discount on non-groceries.. + common $5 discount for every $100 on bill ");
 			discounted = skip_grocery_amt -(skip_grocery_amt*5/100);
